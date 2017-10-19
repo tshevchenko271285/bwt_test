@@ -46,7 +46,7 @@ class FrontController {
         throw new Exception("Interface");
       }
     } else {
-      throw new Exception("Controller");
+		throw new Exception("Controller");
     }
   }
   public function getParams() {

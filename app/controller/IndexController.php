@@ -1,15 +1,17 @@
 <?php
 class IndexController implements IController {
-	public function indexAction(){
-	//$fc = FrontController::getInstance();
-    /* Инициализация модели */
-    //$model = new FileModel();
-    
-    //$model->name = "Guest";
-
-    //$output = $model->render(USER_DEFAULT_FILE);
-
-    //$fc->setBody($output);
-		echo 'hello i`m index page';
+	public $data = [];
+	protected $page;
+	
+	public function __construct(){
+		$this->page = new PageModel();
+		$this->data['view'] = $this->page->getNameView(__CLASS__);
+		$this->data['title'] = 'BWT scool';
 	}
+	
+	public function indexAction(){
+		$this->page->setPageData($this->data);
+		$this->page->getView();
+	}
+	
 }
