@@ -75,5 +75,6 @@
     <script src="http://<?= $_SERVER['SERVER_NAME'] ?>/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="http://<?= $_SERVER['SERVER_NAME'] ?>/node_modules/bootstrap/assets/js/ie10-viewport-bug-workaround.js"></script>
+    <script src="http://<?= $_SERVER['SERVER_NAME'] ?>/js/custom.js"></script>
   </body>
 </html>
