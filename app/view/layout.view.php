@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -67,8 +66,7 @@
     </div><!-- /.container -->
 
 
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
+    <!-- Bootstrap core JavaScript ->>
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="http://<?= $_SERVER['SERVER_NAME'] ?>/node_modules/bootstrap/assets/js/vendor/jquery.min.js"><\/script>')</script>
@@ -77,4 +75,14 @@
     <script src="http://<?= $_SERVER['SERVER_NAME'] ?>/node_modules/bootstrap/assets/js/ie10-viewport-bug-workaround.js"></script>
     <script src="http://<?= $_SERVER['SERVER_NAME'] ?>/js/custom.js"></script>
   </body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<?php require_once $this->data['view']; ?>
+</body>
 </html>
