@@ -19,7 +19,6 @@
 				 .done(function(response) {
 				  	console.log("Response : " + response);
 				 	app.cleanFrom(form);
-
 				});
 			};
 		},

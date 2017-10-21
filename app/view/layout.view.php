@@ -31,7 +31,7 @@
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="http://<?= $_SERVER['SERVER_NAME']?>">Главная</a></li>
+            <li><a href="http://<?= $_SERVER['SERVER_NAME']?>">Главная</a></li>
             <li><a href="http://<?= $_SERVER['SERVER_NAME']?>/feedback/add">Добавить отзыв</a></li>
             <li><a href="http://<?= $_SERVER['SERVER_NAME']?>/feedback/get">Отзывы</a></li>
           </ul>

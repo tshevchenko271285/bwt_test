@@ -28,10 +28,10 @@ class DbModel {
 	
 	public function getFeedbacks(){
 		
-		$sql = "SELECT * FROM feedbacks";
+		$sql = "SELECT * FROM feedbacks ORDER BY date DESC";
 		
-		$result = $this->db->query($sql, PDO::FETCH_ASSOC);
-		return json_encode($result->fetchAll());
+		$result = $this->db->query($sql, PDO::FETCH_OBJ);
+		return $result->fetchAll();
 		
 	}
 }

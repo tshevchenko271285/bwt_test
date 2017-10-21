@@ -14,12 +14,8 @@ class FeedbackController extends IndexController {
 	}
 	public function getAction(){
 		$this->data['view'] = 'get'.$this->page->getNameView(__CLASS__);
-		
-		if($_SERVER['HTTP_X_REQUESTED_WITH']) {
-			$this->data['feedbacks'] = $this->db->getFeedbacks();
-		}
-		
 		$this->data['feedbacks'] = $this->db->getFeedbacks();
+
 		$this->page->setPageData($this->data);
 		$this->page->getView();
 	}
@@ -28,10 +24,13 @@ class FeedbackController extends IndexController {
 			$this->addAction();
 			exit;	
 		}
-			$name = trim(strip_tags($_POST['name']));
-			$email = trim(strip_tags($_POST['email']));
-			$message = trim(strip_tags($_POST['message']));
-			
-			$this->db->saveFeedback($name, $email, $message);
+		$name = trim(strip_tags($_POST['name']));
+		$email = trim(strip_tags($_POST['email']));
+		$message = trim(strip_tags($_POST['message']));
+		
+		$this->db->saveFeedback($name, $email, $message);
+	
+		$this->data['view'] = 'get'.$this->page->getNameView(__CLASS__);
+		$this->getAction();
 	}
 }
