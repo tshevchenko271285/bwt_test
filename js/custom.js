@@ -1,6 +1,6 @@
 (function(){
-
 	var app = {
+		data : {},
 		initialize : function(){
 			this.modules();
 			this.setUpListeners();
@@ -15,14 +15,22 @@
 			e.preventDefault();
 			var form = $(this);
 			if(app.validateFrom(form) === true){
-				console.info('Валидация формы пройдена!!!');
+
+
+				console.info('Валидация формы пройдена!!!', app.data);
+				$.post("/feedback/save", app.data)
+				 .done(function(response) {
+				  	console.log("Response : " + response);
+				});
 			};
 		},
 		validateFrom : function(form){
-			var inputs, input, valid, formGroup, label, textError;
+			var data, inputs, input, valid, formGroup, label, textError;
+
 			valid = true;
 			inputs = form.find('input');
 			inputs.push(form.find('textarea'));
+
 			$.each(inputs, function(index, value){
 				input = $(value);
 				value = input.val();
@@ -43,10 +51,26 @@
 					input.tooltip('hide');
 					formGroup.removeClass('has-error');
 					formGroup.addClass('has-success');
+					app.getData(input);
 				}
-
 			});
+
 			return valid;
+		},
+		getData : function(input){
+			console.log(input.attr('name'), input.val());
+			var name, value;
+			name = input.attr('name');
+			value = input.val();
+			switch(name) {
+				case 'name' :
+					app.data.name = value; break;
+				case 'email' :
+					app.data.email = value; break;
+				case 'message' :
+					app.data.message = value; break;
+				
+			};
 		}
 	};
 

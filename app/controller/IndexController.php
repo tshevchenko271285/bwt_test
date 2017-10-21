@@ -1,7 +1,7 @@
 <?php
 class IndexController implements IController {
 	public $data = [];
-	protected $page;
+	protected $page, $db;
 	
 	public function __construct(){
 		$this->page = new PageModel();
