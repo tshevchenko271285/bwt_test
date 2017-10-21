@@ -15,12 +15,11 @@
 			e.preventDefault();
 			var form = $(this);
 			if(app.validateFrom(form) === true){
-
-
-				console.info('Валидация формы пройдена!!!', app.data);
 				$.post("/feedback/save", app.data)
 				 .done(function(response) {
 				  	console.log("Response : " + response);
+				 	app.cleanFrom(form);
+
 				});
 			};
 		},
@@ -37,7 +36,7 @@
 				formGroup = input.parents('.form-group');
 				label = formGroup.find('label')
 						.text().toLowerCase();
-				textError = 'Введите ' + label;
+				textError = 'Значение поля ' + label + ' не корректно!';
 
 				if(value.length < 3) {
 					formGroup.addClass('has-error');
@@ -51,13 +50,13 @@
 					input.tooltip('hide');
 					formGroup.removeClass('has-error');
 					formGroup.addClass('has-success');
-					app.getData(input);
+					app.setData(input);
 				}
 			});
 
 			return valid;
 		},
-		getData : function(input){
+		setData : function(input){
 			console.log(input.attr('name'), input.val());
 			var name, value;
 			name = input.attr('name');
@@ -71,6 +70,14 @@
 					app.data.message = value; break;
 				
 			};
+		},
+		cleanFrom : function(form){
+			inputs = form.find('input');
+			inputs.push(form.find('textarea'));
+
+			$.each(inputs, function(index, value){
+				$(value).val('');
+			});
 		}
 	};
 
